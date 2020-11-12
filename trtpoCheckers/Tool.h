@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include"MyHeader.h"
 
 class Button {
@@ -69,7 +69,7 @@ void Regulations_windows(ContextSettings& settings)
 {
 	setlocale(LC_ALL, "rus");
 
-	RenderWindow RegulationsWindow(VideoMode(600, 550), L"Правила игры Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
+	RenderWindow RegulationsWindow(VideoMode(600, 550), L"РџСЂР°РІРёР»Р° РёРіСЂС‹ Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
 	Image icon;
 	icon.loadFromFile("Images/icon.png");
 	RegulationsWindow.setIcon(32, 32, icon.getPixelsPtr());
@@ -77,43 +77,43 @@ void Regulations_windows(ContextSettings& settings)
 	Font font;
 	font.loadFromFile("Font//bahnschrift.ttf");
 	Text text[13];
-	text[0] = Text(L"Правила:", font, 30);
+	text[0] = Text(L"РџСЂР°РІРёР»Р°:", font, 30);
 	text[0].setPosition(25, 25);
 
-	text[1] = Text(L"1-Существует только два вида шашек:", font, 25);
+	text[1] = Text(L"1-РЎСѓС‰РµСЃС‚РІСѓРµС‚ С‚РѕР»СЊРєРѕ РґРІР° РІРёРґР° С€Р°С€РµРє:", font, 25);
 	text[1].setPosition(25, 75);
 
-	text[2] = Text(L"простые и дамки.", font, 25);
+	text[2] = Text(L"РїСЂРѕСЃС‚С‹Рµ Рё РґР°РјРєРё.", font, 25);
 	text[2].setPosition(25, 110);
 
-	text[3] = Text(L"2-В начале партии все шашки простые.", font, 25);
+	text[3] = Text(L"2-Р’ РЅР°С‡Р°Р»Рµ РїР°СЂС‚РёРё РІСЃРµ С€Р°С€РєРё РїСЂРѕСЃС‚С‹Рµ.", font, 25);
 	text[3].setPosition(25, 145);
 
-	text[4] = Text(L"3-Простая шашка может превратиться в ", font, 25);
+	text[4] = Text(L"3-РџСЂРѕСЃС‚Р°СЏ С€Р°С€РєР° РјРѕР¶РµС‚ РїСЂРµРІСЂР°С‚РёС‚СЊСЃСЏ РІ ", font, 25);
 	text[4].setPosition(25, 180);
 
-	text[5] = Text(L"дамку, если она достигнет последнего", font, 25);
+	text[5] = Text(L"РґР°РјРєСѓ, РµСЃР»Рё РѕРЅР° РґРѕСЃС‚РёРіРЅРµС‚ РїРѕСЃР»РµРґРЅРµРіРѕ", font, 25);
 	text[5].setPosition(25, 215);
 
-	text[6] = Text(L"противоположного горизонтального ряда", font, 25);
+	text[6] = Text(L"РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅРѕРіРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ СЂСЏРґР°", font, 25);
 	text[6].setPosition(25, 250);
 
-	text[7] = Text(L"доски.", font, 25);
+	text[7] = Text(L"РґРѕСЃРєРё.", font, 25);
 	text[7].setPosition(25, 285);
 
-	text[8] = Text(L"4-Простые шашки ходят вперёд на следующее ", font, 25);
+	text[8] = Text(L"4-РџСЂРѕСЃС‚С‹Рµ С€Р°С€РєРё С…РѕРґСЏС‚ РІРїРµСЂС‘Рґ РЅР° СЃР»РµРґСѓСЋС‰РµРµ ", font, 25);
 	text[8].setPosition(25, 320);
 
-	text[9] = Text(L"поле, назад, только если надо взять шашку.", font, 25);
+	text[9] = Text(L"РїРѕР»Рµ, РЅР°Р·Р°Рґ, С‚РѕР»СЊРєРѕ РµСЃР»Рё РЅР°РґРѕ РІР·СЏС‚СЊ С€Р°С€РєСѓ.", font, 25);
 	text[9].setPosition(25, 355);
 
-	text[10] = Text(L"Дамки могут ходить и вперёд и назад.", font, 25);
+	text[10] = Text(L"Р”Р°РјРєРё РјРѕРіСѓС‚ С…РѕРґРёС‚СЊ Рё РІРїРµСЂС‘Рґ Рё РЅР°Р·Р°Рґ.", font, 25);
 	text[10].setPosition(25, 390);
 
-	text[11] = Text(L"5-Брать шашку, находящуюся под боем", font, 25);
+	text[11] = Text(L"5-Р‘СЂР°С‚СЊ С€Р°С€РєСѓ, РЅР°С…РѕРґСЏС‰СѓСЋСЃСЏ РїРѕРґ Р±РѕРµРј", font, 25);
 	text[11].setPosition(25, 425);
 
-	text[12] = Text(L"обязательно.", font, 25);
+	text[12] = Text(L"РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ.", font, 25);
 	text[12].setPosition(25, 460);
 
 

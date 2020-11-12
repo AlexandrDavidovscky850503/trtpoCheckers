@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Square.h"
 #include"MyHeader.h"
 
@@ -16,12 +16,12 @@ public:
 		throw 1;
 	}
 
-	void draw_board(RenderWindow& _window) {	//отрисовка доски
+	void draw_board(RenderWindow& _window) {	//РѕС‚СЂРёСЃРѕРІРєР° РґРѕСЃРєРё
 
-		// определяем прямоугольник размером 
+		// РѕРїСЂРµРґРµР»СЏРµРј РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє СЂР°Р·РјРµСЂРѕРј 
 		rectangle.setSize(Vector2f{ 400,400 });
 		rectangle.setFillColor(sf::Color(0, 50, 250));
-		// задаём контур толщиной 5 пикселей 
+		// Р·Р°РґР°С‘Рј РєРѕРЅС‚СѓСЂ С‚РѕР»С‰РёРЅРѕР№ 5 РїРёРєСЃРµР»РµР№ 
 		rectangle.setOutlineThickness(5);
 		rectangle.setOutlineColor(sf::Color(0, 0, 0));
 		rectangle.setPosition(50, 50);
@@ -29,11 +29,11 @@ public:
 
 		for (int i = 1; i <= 8; i++)
 			for (int j = 1; j <= 8; j++) {
-				all_squares[i - 1][j - 1].set_position(50 * i, 50 * j);//сохранить координаты клетки  
+				all_squares[i - 1][j - 1].set_position(50 * i, 50 * j);//СЃРѕС…СЂР°РЅРёС‚СЊ РєРѕРѕСЂРґРёРЅР°С‚С‹ РєР»РµС‚РєРё  
 				if ((i + j) % 2 == 1)
-					all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));//белая клетка
+					all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));//Р±РµР»Р°СЏ РєР»РµС‚РєР°
 				else
-					all_squares[i - 1][j - 1].set_color(Color(174, 87, 0));// коричневая клетка
+					all_squares[i - 1][j - 1].set_color(Color(174, 87, 0));// РєРѕСЂРёС‡РЅРµРІР°СЏ РєР»РµС‚РєР°
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 
@@ -43,18 +43,18 @@ public:
 				if (all_squares[i - 1][j - 1].get_backlight() == 1) {
 					RectangleShape square_light(Vector2f(50, 50));
 					square_light.setPosition(50 * i, 50 * j);
-					all_squares[i - 1][j - 1].set_color(Color(26, 255, 0));//подсветка зелёным цветом
+					all_squares[i - 1][j - 1].set_color(Color(26, 255, 0));//РїРѕРґСЃРІРµС‚РєР° Р·РµР»С‘РЅС‹Рј С†РІРµС‚РѕРј
 				}
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 
-		Font font;//шрифт
-		font.loadFromFile("Font//bahnschrift.ttf");//подгрузка шрифта
+		Font font;//С€СЂРёС„С‚
+		font.loadFromFile("Font//bahnschrift.ttf");//РїРѕРґРіСЂСѓР·РєР° С€СЂРёС„С‚Р°
 		Text* t[16];
 		for (int i = 0; i < 16; i++)
 			t[i] = new Text("", font, 35);
 
-		t[0]->setString(L"1");	//L-расширенные строковые литералы
+		t[0]->setString(L"1");	//L-СЂР°СЃС€РёСЂРµРЅРЅС‹Рµ СЃС‚СЂРѕРєРѕРІС‹Рµ Р»РёС‚РµСЂР°Р»С‹
 		t[1]->setString(L"2");
 		t[2]->setString(L"3");
 		t[3]->setString(L"4");
@@ -62,7 +62,7 @@ public:
 		t[5]->setString(L"6");
 		t[6]->setString(L"7");
 		t[7]->setString(L"8");
-		t[8]->setString(L"А");
+		t[8]->setString(L"Рђ");
 		t[9]->setString(L"B");
 		t[10]->setString(L"C");
 		t[11]->setString(L"D");

@@ -1,75 +1,75 @@
-#pragma once
+ï»¿#pragma once
 #include"Tool.h"
 #include"MyHeader.h"
 
 class Checker {
 private:
-	CircleShape checker = CircleShape(18);// îïðåäåëÿåì êðóã ñ ðàäèóñîì 18
-	bool checker_color;// 0 äëÿ áåëûõ, 1 äëÿ ÷åðíûõ
-	bool select = 0;//1 åñëè âûáðàíà, 0 åñëè íåò
-	bool queen = 0;//1 åñëè øàøêà äàìêà, 0 åñëè íåò
-	Texture texture;//òåêñòóðà çíà÷êà äàìêè
+	CircleShape checker = CircleShape(18);// Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÐ¼ ÐºÑ€ÑƒÐ³ Ñ Ñ€Ð°Ð´Ð¸ÑƒÑÐ¾Ð¼ 18
+	bool checker_color;// 0 Ð´Ð»Ñ Ð±ÐµÐ»Ñ‹Ñ…, 1 Ð´Ð»Ñ Ñ‡ÐµÑ€Ð½Ñ‹Ñ…
+	bool select = 0;//1 ÐµÑÐ»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð°, 0 ÐµÑÐ»Ð¸ Ð½ÐµÑ‚
+	bool queen = 0;//1 ÐµÑÐ»Ð¸ ÑˆÐ°ÑˆÐºÐ° Ð´Ð°Ð¼ÐºÐ°, 0 ÐµÑÐ»Ð¸ Ð½ÐµÑ‚
+	Texture texture;//Ñ‚ÐµÐºÑÑ‚ÑƒÑ€Ð° Ð·Ð½Ð°Ñ‡ÐºÐ° Ð´Ð°Ð¼ÐºÐ¸
 	Sprite sprite;
 
 
 public:
-	CircleShape& get_checker() {//ïîëó÷èòü øàøêó
+	CircleShape& get_checker() {//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÑˆÐ°ÑˆÐºÑƒ
 		return this->checker;
 	}
-	Vector2f get_position() {// ïîëó÷èòü êîîðäèíàòû
+	Vector2f get_position() {// Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹
 		return this->checker.getPosition();
 	}
-	float get_x() {//ïîëó÷èòü êîîðäèíàòó X
+	float get_x() {//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñƒ X
 		return (this->get_position().x - 57) / 50;
 	}
-	float get_y() {//ïîëó÷èòü êîîðäèíàòó Y
+	float get_y() {//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñƒ Y
 		return (this->get_position().y - 57) / 50;
 	}
-	bool get_color() {// ïîëó÷èòü öâåò øàøêè
+	bool get_color() {// Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ñ†Ð²ÐµÑ‚ ÑˆÐ°ÑˆÐºÐ¸
 		return this->checker_color;
 	}
-	bool get_select() {//ïîëó÷èòü ñîñòîÿíèå øàøêè
+	bool get_select() {//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ ÑˆÐ°ÑˆÐºÐ¸
 		return this->select;
 	}
-	bool get_queen() {//ïîëó÷èòü ðàíã øàøêè
+	bool get_queen() {//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ñ€Ð°Ð½Ð³ ÑˆÐ°ÑˆÐºÐ¸
 		return this->queen;
 	}
 
 
-	void make_queen() {//èçìåíåíèå ðàíãà
+	void make_queen() {//Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ñ€Ð°Ð½Ð³Ð°
 		this->queen = 1;
 	}
-	void set_position(float x_positinon, float y_position) {//ñîõðàíèòü êîîðäèíàòû øàøêè
+	void set_position(float x_positinon, float y_position) {//ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ ÑˆÐ°ÑˆÐºÐ¸
 		this->checker.setPosition(x_positinon, y_position);
 	}
-	void set_color(Color color) {//ñîõðàíèòü öâåò øàøêè
+	void set_color(Color color) {//ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ñ†Ð²ÐµÑ‚ ÑˆÐ°ÑˆÐºÐ¸
 		this->checker.setFillColor(color);
 	}
-	void select_checker() {//âûáîð ôèãóðû
+	void select_checker() {//Ð²Ñ‹Ð±Ð¾Ñ€ Ñ„Ð¸Ð³ÑƒÑ€Ñ‹
 		this->select = 1;
 	}
-	void leave_checker() {//îòìåíà âûáîðà ôèãóðû
+	void leave_checker() {//Ð¾Ñ‚Ð¼ÐµÐ½Ð° Ð²Ñ‹Ð±Ð¾Ñ€Ð° Ñ„Ð¸Ð³ÑƒÑ€Ñ‹
 		this->select = 0;
 	}
 
 	Checker() { }
 
 	Checker(float x_position, float y_position, bool color) {
-		this->checker.setOutlineThickness(3);// çàäà¸ì êîíòóð òîëùèíîé 3 ïèêñåëåé ÷¸ðíîãî öâåòà
+		this->checker.setOutlineThickness(3);// Ð·Ð°Ð´Ð°Ñ‘Ð¼ ÐºÐ¾Ð½Ñ‚ÑƒÑ€ Ñ‚Ð¾Ð»Ñ‰Ð¸Ð½Ð¾Ð¹ 3 Ð¿Ð¸ÐºÑÐµÐ»ÐµÐ¹ Ñ‡Ñ‘Ñ€Ð½Ð¾Ð³Ð¾ Ñ†Ð²ÐµÑ‚Ð°
 		this->checker.setOutlineColor(sf::Color(0, 0, 0));
 		this->checker_color = color;
 
 		if (color == 0)
-			this->set_color(Color(255, 255, 255));//áåëàÿ øàøêà
+			this->set_color(Color(255, 255, 255));//Ð±ÐµÐ»Ð°Ñ ÑˆÐ°ÑˆÐºÐ°
 		else if (color == 1)
-			//this->set_color(Color(61, 25, 7));//÷¸ðåàÿ øàøêà
+			//this->set_color(Color(61, 25, 7));//Ñ‡Ñ‘Ñ€ÐµÐ°Ñ ÑˆÐ°ÑˆÐºÐ°
 			this->set_color(Color::Black);
 
 		this->set_position(x_position, y_position);
 		this->select = 0;
 	}
 
-	void draw_checker(RenderWindow& _window) {// îòðèñîâêà øàøêè
+	void draw_checker(RenderWindow& _window) {// Ð¾Ñ‚Ñ€Ð¸ÑÐ¾Ð²ÐºÐ° ÑˆÐ°ÑˆÐºÐ¸
 		_window.draw(this->checker);
 		if (queen == 1)
 			if (ifImage == false)

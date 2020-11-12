@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include"MyHeader.h"
 #include"CheckerOnBoard.h"
 #include"Tool.h"
@@ -6,14 +6,14 @@
 
 class Game {
 private:
-	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
-	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
-	int choise_chacker;//номер выбранной для хода шашки
-	float x;//номер клетки в которой шашка по оси х
-	float y;//номер клетки в которой шашка по оси у
-	Vector2i mause_position;//позиция мыши
+	bool who_can_move = 0;//С†РІРµС‚ С…РѕРґР°, 0 РµСЃР»Рё С…РѕРґ Р±РµР»С‹С…, 1 РµСЃР»Рё С…РѕРґ С‡РµСЂРЅС‹С…
+	bool select_is_made = 0;//0 РµСЃР»Рё С„РёРіСѓСЂС‹ РЅРµ РІС‹Р±СЂР°РЅР°, 1 РµСЃР»Рё РІС‹Р±СЂР°РЅР°
+	int choise_chacker;//РЅРѕРјРµСЂ РІС‹Р±СЂР°РЅРЅРѕР№ РґР»СЏ С…РѕРґР° С€Р°С€РєРё
+	float x;//РЅРѕРјРµСЂ РєР»РµС‚РєРё РІ РєРѕС‚РѕСЂРѕР№ С€Р°С€РєР° РїРѕ РѕСЃРё С…
+	float y;//РЅРѕРјРµСЂ РєР»РµС‚РєРё РІ РєРѕС‚РѕСЂРѕР№ С€Р°С€РєР° РїРѕ РѕСЃРё Сѓ
+	Vector2i mause_position;//РїРѕР·РёС†РёСЏ РјС‹С€Рё
 	Checkers_on_board checkers_on_board;
-	vector <int> who_must_eat;//храню шашки, которые могут съесть
+	vector <int> who_must_eat;//С…СЂР°РЅСЋ С€Р°С€РєРё, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ СЃСЉРµСЃС‚СЊ
 public:
 	Checkers_on_board& get_checkers_on_board() {
 		return this->checkers_on_board;
@@ -33,11 +33,11 @@ public:
 		return this->who_can_move;
 	}
 
-	void choise_of_chacker(RenderWindow& _window, Event _event) {//выбор шашки
+	void choise_of_chacker(RenderWindow& _window, Event _event) {//РІС‹Р±РѕСЂ С€Р°С€РєРё
 		if (_event.type == sf::Event::MouseButtonPressed)
 			if (_event.key.code == Mouse::Left) {
 				set_mause_position(_window);
-				if (_event.type == sf::Event::MouseButtonPressed)//для отмены взятия фигуры
+				if (_event.type == sf::Event::MouseButtonPressed)//РґР»СЏ РѕС‚РјРµРЅС‹ РІР·СЏС‚РёСЏ С„РёРіСѓСЂС‹
 				{
 					set_mause_position(_window);
 					if (_event.key.code == Mouse::Left && !checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight())
@@ -57,7 +57,7 @@ public:
 						this->mause_position.y <= checkers_on_board.get_checker(i).get_position().y + 43)
 						if (checkers_on_board.get_checker(i).get_select() == 0 && select_is_made == 0)
 							if (checkers_on_board.get_checker(i).get_color() == who_can_move) {
-								if (if_you_can_eat_you_must_eat(checkers_on_board.get_checker(i).get_color())) {//проверка на обязательный ход какой то конкретной шашки
+								if (if_you_can_eat_you_must_eat(checkers_on_board.get_checker(i).get_color())) {//РїСЂРѕРІРµСЂРєР° РЅР° РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ С…РѕРґ РєР°РєРѕР№ С‚Рѕ РєРѕРЅРєСЂРµС‚РЅРѕР№ С€Р°С€РєРё
 									int s = 0;
 									for (int f : who_must_eat)
 										if (f == i)
@@ -86,10 +86,10 @@ public:
 	}
 
 
-	void change_position(RenderWindow& _window, Event _event) {//ход шашки
+	void change_position(RenderWindow& _window, Event _event) {//С…РѕРґ С€Р°С€РєРё
 
 		if (_event.type == sf::Event::MouseButtonPressed) {
-			if (_event.key.code == Mouse::Left)  //// _event.key.code == Mouse::Right
+			if (_event.key.code == Mouse::Left) 
 				if (checkers_on_board.get_checker(choise_chacker).get_select() == 1 && select_is_made == 1) {
 					set_mause_position(_window);
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) {
@@ -147,11 +147,11 @@ public:
 
 
 	void make_move(RenderWindow& _window, Event _event) {
-		choise_of_chacker(_window, _event);//проверка выбора шашки
-		change_position(_window, _event);//ход шашки
+		choise_of_chacker(_window, _event);//РїСЂРѕРІРµСЂРєР° РІС‹Р±РѕСЂР° С€Р°С€РєРё
+		change_position(_window, _event);//С…РѕРґ С€Р°С€РєРё
 	}
 
-	void square_for_move() {//варианты хода
+	void square_for_move() {//РІР°СЂРёР°РЅС‚С‹ С…РѕРґР°
 		if (checkers_on_board.get_checker(choise_chacker).get_color()) {
 			if (x + 1 >= 0 && y + 1 < 8 && x + 1 < 8 && y + 1 >= 0 && checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0)
 				if (end_board(x + 1, y + 1))
@@ -174,43 +174,43 @@ public:
 
 
 		}
-		if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {//варианты съесть шашку
+		if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {//РІР°СЂРёР°РЅС‚С‹ СЃСЉРµСЃС‚СЊ С€Р°С€РєСѓ
 			checkers_on_board.delete_backlight();
 			chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color());
 		}
 	}
-	bool chance_eat_checker(bool _color) {//варианты съесть шашку
+	bool chance_eat_checker(bool _color) {//РІР°СЂРёР°РЅС‚С‹ СЃСЉРµСЃС‚СЊ С€Р°С€РєСѓ
 		bool more = 1;
-		if (x + 1 >= 0 && x + 1 < 8 && y + 1 >= 0 && y + 1 < 8 && checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) // проверяем правый нижний ход шашки
-			if (x + 1 >= 0 && x + 1 < 8 && y + 1 >= 0 && y + 1 < 8 && checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color) // стоит ли там вражеская шашка
-				if (x + 2 >= 0 && x + 2 < 8 && y + 2 >= 0 && y + 2 < 8 && checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0) // свободно ли пространство за шашкой противника
-					if (end_board(x + 2, y + 2)) {// если не конец доски
+		if (x + 1 >= 0 && x + 1 < 8 && y + 1 >= 0 && y + 1 < 8 && checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) // РїСЂРѕРІРµСЂСЏРµРј РїСЂР°РІС‹Р№ РЅРёР¶РЅРёР№ С…РѕРґ С€Р°С€РєРё
+			if (x + 1 >= 0 && x + 1 < 8 && y + 1 >= 0 && y + 1 < 8 && checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color) // СЃС‚РѕРёС‚ Р»Рё С‚Р°Рј РІСЂР°Р¶РµСЃРєР°СЏ С€Р°С€РєР°
+				if (x + 2 >= 0 && x + 2 < 8 && y + 2 >= 0 && y + 2 < 8 && checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0) // СЃРІРѕР±РѕРґРЅРѕ Р»Рё РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ Р·Р° С€Р°С€РєРѕР№ РїСЂРѕС‚РёРІРЅРёРєР°
+					if (end_board(x + 2, y + 2)) {// РµСЃР»Рё РЅРµ РєРѕРЅРµС† РґРѕСЃРєРё
 						checkers_on_board.get_board().get_all_squares(x + 2, y + 2).on_backlight();
 						more = 0;
 					}
 
 
-		if (x - 1 >= 0 && y + 1 < 8 && x - 1 < 8 && y + 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment()) // проверяем левый нижний ход шашки
-			if (x - 1 >= 0 && y + 1 < 8 && x - 1 < 8 && y + 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != _color) // стоит ли там вражеская шашка
-				if (x - 2 >= 0 && y + 2 < 8 && x - 2 < 8 && y + 2 >= 0 && checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0) // свободно ли пространство за шашкой противника
+		if (x - 1 >= 0 && y + 1 < 8 && x - 1 < 8 && y + 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment()) // РїСЂРѕРІРµСЂСЏРµРј Р»РµРІС‹Р№ РЅРёР¶РЅРёР№ С…РѕРґ С€Р°С€РєРё
+			if (x - 1 >= 0 && y + 1 < 8 && x - 1 < 8 && y + 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != _color) // СЃС‚РѕРёС‚ Р»Рё С‚Р°Рј РІСЂР°Р¶РµСЃРєР°СЏ С€Р°С€РєР°
+				if (x - 2 >= 0 && y + 2 < 8 && x - 2 < 8 && y + 2 >= 0 && checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0) // СЃРІРѕР±РѕРґРЅРѕ Р»Рё РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ Р·Р° С€Р°С€РєРѕР№ РїСЂРѕС‚РёРІРЅРёРєР°
 					if (end_board(x - 2, y + 2)) {
 						checkers_on_board.get_board().get_all_squares(x - 2, y + 2).on_backlight();
 						more = 0;
 					}
 
 
-		if (x + 1 >= 0 && y - 1 < 8 && x + 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment()) // проверяем правый верхний ход шашки
-			if (x + 1 >= 0 && y - 1 < 8 && x + 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != _color) // стоит ли там вражеская шашка
-				if (x + 2 >= 0 && y - 2 < 8 && x + 2 < 8 && y - 2 >= 0 && checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0) // свободно ли пространство за шашкой противника
+		if (x + 1 >= 0 && y - 1 < 8 && x + 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment()) // РїСЂРѕРІРµСЂСЏРµРј РїСЂР°РІС‹Р№ РІРµСЂС…РЅРёР№ С…РѕРґ С€Р°С€РєРё
+			if (x + 1 >= 0 && y - 1 < 8 && x + 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != _color) // СЃС‚РѕРёС‚ Р»Рё С‚Р°Рј РІСЂР°Р¶РµСЃРєР°СЏ С€Р°С€РєР°
+				if (x + 2 >= 0 && y - 2 < 8 && x + 2 < 8 && y - 2 >= 0 && checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0) // СЃРІРѕР±РѕРґРЅРѕ Р»Рё РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ Р·Р° С€Р°С€РєРѕР№ РїСЂРѕС‚РёРІРЅРёРєР°
 					if (end_board(x + 2, y - 2)) {
 						checkers_on_board.get_board().get_all_squares(x + 2, y - 2).on_backlight();
 						more = 0;
 					}
 
 
-		if (x - 1 >= 0 && y - 1 < 8 && x - 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment()) // проверяем левый верхний ход шашки
-			if (x - 1 >= 0 && y - 1 < 8 && x - 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != _color) // стоит ли там вражеская шашка
-				if (x - 2 >= 0 && y - 2 < 8 && x - 2 < 8 && y - 2 >= 0 && checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0) // свободно ли пространство за шашкой противника
+		if (x - 1 >= 0 && y - 1 < 8 && x - 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment()) // РїСЂРѕРІРµСЂСЏРµРј Р»РµРІС‹Р№ РІРµСЂС…РЅРёР№ С…РѕРґ С€Р°С€РєРё
+			if (x - 1 >= 0 && y - 1 < 8 && x - 1 < 8 && y - 1 >= 0 && checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != _color) // СЃС‚РѕРёС‚ Р»Рё С‚Р°Рј РІСЂР°Р¶РµСЃРєР°СЏ С€Р°С€РєР°
+				if (x - 2 >= 0 && y - 2 < 8 && x - 2 < 8 && y - 2 >= 0 && checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0) // СЃРІРѕР±РѕРґРЅРѕ Р»Рё РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ Р·Р° С€Р°С€РєРѕР№ РїСЂРѕС‚РёРІРЅРёРєР°
 					if (end_board(x - 2, y - 2)) {
 						checkers_on_board.get_board().get_all_squares(x - 2, y - 2).on_backlight();
 						more = 0;
@@ -218,7 +218,7 @@ public:
 		return more;
 	}
 
-	bool eat_checker() {//ем шашку
+	bool eat_checker() {//РµРј С€Р°С€РєСѓ
 		if ((centre_on_square().x - 57) / 50 - x == 2 || (centre_on_square().x - 57) / 50 - x == -2 &&
 			(centre_on_square().y - 57) / 50 - y == 2 || (centre_on_square().y - 57) / 50 - y == -2)
 			for (int i = 0; i < checkers_on_board.get_size(); i++)
@@ -241,19 +241,19 @@ public:
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 0)
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0) {
 				checkers_on_board.get_checker(choise_chacker).make_queen();
-			//	who_can_move = !who_can_move;
+
 			}
 
 
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 1)
 			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7) {
 				checkers_on_board.get_checker(choise_chacker).make_queen();
-			//	who_can_move = !who_can_move;
+
 			}
 
 
 	}
-	bool queen_square_for_move(bool _color, int _i1, int _i2, int _i3, int _i4) {//варианты хода дамки
+	bool queen_square_for_move(bool _color, int _i1, int _i2, int _i3, int _i4) {//РІР°СЂРёР°РЅС‚С‹ С…РѕРґР° РґР°РјРєРё
 		int must_eat = 0;
 		int i_line_number_eat[4] = { 0,0,0,0 };
 
@@ -264,7 +264,7 @@ public:
 		if (can_eat[0]) {
 			can_eat[0] = 0;
 			while (1) {
-				if (end_board(x_queen + 1, y_queen + 1)) { // низ право
+				if (end_board(x_queen + 1, y_queen + 1)) { // РЅРёР· РїСЂР°РІРѕ
 					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_employment() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen + 1).get_checker_color() == _color)
 							break;
@@ -302,7 +302,7 @@ public:
 			x_queen = x;
 			y_queen = y;
 			while (1) {
-				if (end_board(x_queen - 1, y_queen + 1)) { // низ лево
+				if (end_board(x_queen - 1, y_queen + 1)) { // РЅРёР· Р»РµРІРѕ
 					if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_employment() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen - 1, y_queen + 1).get_checker_color() == _color) {
 							break;
@@ -340,7 +340,7 @@ public:
 			x_queen = x;
 			y_queen = y;
 			while (1) {
-				if (end_board(x_queen + 1, y_queen - 1)) {//верх право
+				if (end_board(x_queen + 1, y_queen - 1)) {//РІРµСЂС… РїСЂР°РІРѕ
 					if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_employment() == 1) {
 						if (checkers_on_board.get_board().get_all_squares(x_queen + 1, y_queen - 1).get_checker_color() == _color) {
 							break;
@@ -421,7 +421,7 @@ public:
 			else return 1;
 		}
 	}
-	bool queen_eat_checker() {//ем шашку
+	bool queen_eat_checker() {//РµРј С€Р°С€РєСѓ
 		int x_eat = 0;
 		int y_eat = 0;
 		if ((centre_on_square().x - 57) / 50 - x >= 2 && (centre_on_square().y - 57) / 50 - y >= 2) {
@@ -514,7 +514,7 @@ public:
 		return 0;
 	}
 
-	bool end_board(float _x, float _y) {//проверка выходы за пределы поля
+	bool end_board(float _x, float _y) {//РїСЂРѕРІРµСЂРєР° РІС‹С…РѕРґС‹ Р·Р° РїСЂРµРґРµР»С‹ РїРѕР»СЏ
 		if (_x >= 0 && _x < 8 && _y >= 0 && _y < 8) {
 			return 1;
 		}
@@ -522,19 +522,19 @@ public:
 	}
 
 	bool if_you_can_eat_you_must_eat(bool _color) {
-		while (who_must_eat.size() != 0)//освобождаем место под новые шашки которые могут съесть
+		while (who_must_eat.size() != 0)//РѕСЃРІРѕР±РѕР¶РґР°РµРј РјРµСЃС‚Рѕ РїРѕРґ РЅРѕРІС‹Рµ С€Р°С€РєРё РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ СЃСЉРµСЃС‚СЊ
 			who_must_eat.pop_back();
 
 		for (int i = 0; i < checkers_on_board.get_size(); i++)
 			if (checkers_on_board.get_checker(i).get_color() == _color) {
-				if (checkers_on_board.get_checker(i).get_queen() == 0) {// обычная шашка
+				if (checkers_on_board.get_checker(i).get_queen() == 0) {// РѕР±С‹С‡РЅР°СЏ С€Р°С€РєР°
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (!chance_eat_checker(_color))
 						who_must_eat.push_back(i);
 
 				}
-				if (checkers_on_board.get_checker(i).get_queen() == 1) {//дамка
+				if (checkers_on_board.get_checker(i).get_queen() == 1) {//РґР°РјРєР°
 					x = checkers_on_board.get_checker(i).get_x();
 					y = checkers_on_board.get_checker(i).get_y();
 					if (queen_square_for_move(_color, 1, 1, 1, 1))
@@ -555,11 +555,11 @@ public:
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");
 			Text t = Text("", font, 25);
-			t.setString(L"Нужно скушать шашку");
+			t.setString(L"РќСѓР¶РЅРѕ СЃРєСѓС€Р°С‚СЊ С€Р°С€РєСѓ");
 			t.setFillColor(Color::Black);
 			t.setPosition(172, 235);
 			Text out = Text("", font, 11);
-			out.setString(L"нажмите что-то для продолжения");
+			out.setString(L"РЅР°Р¶РјРёС‚Рµ С‡С‚Рѕ-С‚Рѕ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ");
 			out.setFillColor(Color::Black);
 			out.setPosition(173, 260);
 			_window.draw(back);
@@ -580,19 +580,19 @@ public:
 		font.loadFromFile("Font//bahnschrift.ttf");
 
 		Text textControlChecker[4];
-		textControlChecker[0] = Text(L"Управление игрой:", font, 30);
+		textControlChecker[0] = Text(L"РЈРїСЂР°РІР»РµРЅРёРµ РёРіСЂРѕР№:", font, 30);
 		textControlChecker[0].setPosition(625, 350);
-		textControlChecker[1] = Text(L"левый щелчёк по шашке - выбор шашки", font, 25);
+		textControlChecker[1] = Text(L"Р»РµРІС‹Р№ С‰РµР»С‡С‘Рє РїРѕ С€Р°С€РєРµ - РІС‹Р±РѕСЂ С€Р°С€РєРё", font, 25);
 		textControlChecker[1].setPosition(532, 395);
-		textControlChecker[2] = Text(L"левый щелчёк по клетке - сделать ход", font, 25);
+		textControlChecker[2] = Text(L"Р»РµРІС‹Р№ С‰РµР»С‡С‘Рє РїРѕ РєР»РµС‚РєРµ - СЃРґРµР»Р°С‚СЊ С…РѕРґ", font, 25);
 		textControlChecker[2].setPosition(540, 420);
 
 		if (who_can_move == 0)
 		{
-			textControlChecker[3] = Text(L"Сейчас ходят белые", font, 35);
+			textControlChecker[3] = Text(L"РЎРµР№С‡Р°СЃ С…РѕРґСЏС‚ Р±РµР»С‹Рµ", font, 35);
 		}
 		else
-			textControlChecker[3] = Text(L"Сейчас ходят черные", font, 35);
+			textControlChecker[3] = Text(L"РЎРµР№С‡Р°СЃ С…РѕРґСЏС‚ С‡РµСЂРЅС‹Рµ", font, 35);
 		textControlChecker[3].setStyle(Text::Bold);
 		textControlChecker[3].setPosition(582, 35);
 
@@ -629,7 +629,7 @@ public:
 		icon.loadFromFile("Images/icon.png");
 
 		ContextSettings settings;
-		settings.antialiasingLevel = 20;//сглаживание
+		settings.antialiasingLevel = 20;//СЃРіР»Р°Р¶РёРІР°РЅРёРµ
 		RenderWindow LoserWindow(VideoMode(400, 150), "Loser", sf::Style::Close | sf::Style::Titlebar, settings);
 		LoserWindow.setIcon(32, 32, icon.getPixelsPtr());
 
@@ -684,12 +684,12 @@ void PvPGame(ContextSettings& settings)
 	font.loadFromFile("Font//bahnschrift.ttf");
 
 	Text  textRegulations, textLoser;
-	textRegulations = Text(L"Правила", font, 40);
+	textRegulations = Text(L"РџСЂР°РІРёР»Р°", font, 40);
 	textRegulations.setPosition(682, 220);
 	textRegulations.setStyle(Text::Bold);
 	textRegulations.setFillColor(Color::Black);
 
-	textLoser = Text(L"Сдаться", font, 40);
+	textLoser = Text(L"РЎРґР°С‚СЊСЃСЏ", font, 40);
 	textLoser.setPosition(682, 120);
 	textLoser.setStyle(Text::Bold);
 	textLoser.setFillColor(Color::Black);
@@ -755,7 +755,7 @@ void PvPGame(ContextSettings& settings)
 		WorkWindow.draw(textRegulations);
 		WorkWindow.draw(textLoser);
 		game.gameInformation(WorkWindow);
-		game.get_checkers_on_board().draw_checkers(WorkWindow);//рисую поле и шашки
+		game.get_checkers_on_board().draw_checkers(WorkWindow);//СЂРёСЃСѓСЋ РїРѕР»Рµ Рё С€Р°С€РєРё
 
 		if (endOfGame == 1) {
 			game.LoserGame();
@@ -763,7 +763,7 @@ void PvPGame(ContextSettings& settings)
 		}
 
 		WorkWindow.display();
-		if (game.end_game())     //рисую если конец игры	
+		if (game.end_game())     //СЂРёСЃСѓСЋ РµСЃР»Рё РєРѕРЅРµС† РёРіСЂС‹	
 		{
 			game.LoserGame();
 			return;

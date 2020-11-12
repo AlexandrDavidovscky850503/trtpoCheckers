@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include"MyHeader.h"
 #include"GameProces.h"
 #include"Checker.h"
@@ -143,19 +143,19 @@ void CheckerSettings(ContextSettings& settings)
 	TextLine1 = Text("", font, 40);
 	TextLine1.setPosition(70, 30);
 	TextLine1.setStyle(Text::Bold);
-	TextLine1.setString(L"Выберите корону");
+	TextLine1.setString(L"Р’С‹Р±РµСЂРёС‚Рµ РєРѕСЂРѕРЅСѓ");
 	TextLine1.setFillColor(Color::Black);
 
 	TextLine2 = Text("", font, 40);
 	TextLine2.setPosition(180, 80);
 	TextLine2.setStyle(Text::Bold);
-	TextLine2.setString(L"дамки");
+	TextLine2.setString(L"РґР°РјРєРё");
 	TextLine2.setFillColor(Color::Black);
 
 	SaveText = Text("", font, 40);
 	SaveText.setPosition(145, 380);
 	SaveText.setStyle(Text::Bold);
-	SaveText.setString(L"Сохранить");
+	SaveText.setString(L"РЎРѕС…СЂР°РЅРёС‚СЊ");
 	SaveText.setFillColor(Color::Black);
 
 	Image icon;

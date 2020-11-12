@@ -1,4 +1,4 @@
-#include"GameProces.h"
+п»ї#include"GameProces.h"
 #include"Settings.h"
 #include"MyHeader.h"
 
@@ -9,7 +9,7 @@ int main()
 	
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	ContextSettings settings;
-	settings.antialiasingLevel = 20;//сглаживание
+	settings.antialiasingLevel = 20;//СЃРіР»Р°Р¶РёРІР°РЅРёРµ
 
 	WorkWindow.create(VideoMode(500, 500), "Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
 	Image icon;
@@ -33,12 +33,12 @@ int main()
 	Settings.setFont(font);
 
 	Text textPvP, textSettings;
-	textPvP = Text(L"Играть", font, 40);
+	textPvP = Text(L"РРіСЂР°С‚СЊ", font, 40);
 	textPvP.setPosition(180, 117.5);
 	textPvP.setStyle(Text::Bold);
 	textPvP.setFillColor(Color::Black);
 
-	textSettings = Text(L"Настройки", font, 40);
+	textSettings = Text(L"РќР°СЃС‚СЂРѕР№РєРё", font, 40);
 	textSettings.setPosition(146, 332.5);
 	textSettings.setStyle(Text::Bold);
 	textSettings.setFillColor(Color::Black);
@@ -67,7 +67,7 @@ int main()
 					PvPGame(settings);
 				}
 
-				if (Settings.isMouseOver(WorkWindow))//открытие окна настроек
+				if (Settings.isMouseOver(WorkWindow))//РѕС‚РєСЂС‹С‚РёРµ РѕРєРЅР° РЅР°СЃС‚СЂРѕРµРє
 				{
 					CheckerSettings(settings);
 				}

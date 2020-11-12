@@ -1,51 +1,51 @@
-#pragma once
+ï»¿#pragma once
 #include"MyHeader.h"
 
 class Square {
 private:
-	bool backlight = 0;	// ïîäñâåòêà 0 åñëè íåò, 1 åñëè åñòü.
-	bool employment = 0;// 0 äëÿ ñâîáîäíûõ, 1 äëÿ çàíÿòûõ.//0-cleaar,1-white,2-black
+	bool backlight = 0;	// Ð¿Ð¾Ð´ÑÐ²ÐµÑ‚ÐºÐ° 0 ÐµÑÐ»Ð¸ Ð½ÐµÑ‚, 1 ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ.
+	bool employment = 0;// 0 Ð´Ð»Ñ ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ñ‹Ñ…, 1 Ð´Ð»Ñ Ð·Ð°Ð½ÑÑ‚Ñ‹Ñ….//0-cleaar,1-white,2-black
 	//int game_chackers = 0;
-	bool checker_color = 0;	// 0 äëÿ áåëûõ, 1 äëÿ ÷åðíûõ.
-	RectangleShape square = RectangleShape(Vector2f(50, 50));//ñîçäàíèå îá. êâàäðàò
+	bool checker_color = 0;	// 0 Ð´Ð»Ñ Ð±ÐµÐ»Ñ‹Ñ…, 1 Ð´Ð»Ñ Ñ‡ÐµÑ€Ð½Ñ‹Ñ….
+	RectangleShape square = RectangleShape(Vector2f(50, 50));//ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¾Ð±. ÐºÐ²Ð°Ð´Ñ€Ð°Ñ‚
 public:
 	Square() {}
 
 	RectangleShape& get_square() {
 		return this->square;
 	}
-	bool get_backlight() {					//ïîëó÷èòü ïîäñâåòêó
+	bool get_backlight() {					//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð´ÑÐ²ÐµÑ‚ÐºÑƒ
 		return this->backlight;
 	}
-	bool get_employment() {					//ïîëó÷èòü çàíÿòîñòü êëåòêè
+	bool get_employment() {					//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð·Ð°Ð½ÑÑ‚Ð¾ÑÑ‚ÑŒ ÐºÐ»ÐµÑ‚ÐºÐ¸
 		return this->employment;
 	}
-	bool get_checker_color() {				//ïîëó÷èòü öâåò øàøêè
+	bool get_checker_color() {				//Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ñ†Ð²ÐµÑ‚ ÑˆÐ°ÑˆÐºÐ¸
 		return this->checker_color;
 	}
 
-	void on_backlight() {					//âêëþ÷èòü ïîäñâåòêó
+	void on_backlight() {					//Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð´ÑÐ²ÐµÑ‚ÐºÑƒ
 		this->backlight = 1;
 	}
-	void off_backlight() {					//âûêëþ÷èòü ïîäñâåòêó
+	void off_backlight() {					//Ð²Ñ‹ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð´ÑÐ²ÐµÑ‚ÐºÑƒ
 		this->backlight = 0;
 	}
 
-	void square_employment(bool _color) {	//êëåòêà çàíÿòà
+	void square_employment(bool _color) {	//ÐºÐ»ÐµÑ‚ÐºÐ° Ð·Ð°Ð½ÑÑ‚Ð°
 		this->employment = 1;
 		this->checker_color = _color;
 	}
 
-	void square_free() {					//êëåòêà ñâîáîäíà
+	void square_free() {					//ÐºÐ»ÐµÑ‚ÐºÐ° ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ð°
 		this->employment = 0;
 	}
 
 
-	void set_color(Color _color) {			//ñîõðàíèòü öâåò êëåòêè
+	void set_color(Color _color) {			//ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ñ†Ð²ÐµÑ‚ ÐºÐ»ÐµÑ‚ÐºÐ¸
 		this->square.setFillColor(_color);
 	}
 
-	void set_position(float _x, float _y) {	//ñîõðàíèòü êîîðäèíàòû
+	void set_position(float _x, float _y) {	//ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹
 		this->square.setPosition(_x, _y);
 	}
 
