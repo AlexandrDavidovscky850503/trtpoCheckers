@@ -6,7 +6,8 @@
 int main()
 {
 	setlocale(LC_ALL, "rus");
-
+	
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	ContextSettings settings;
 	settings.antialiasingLevel = 20;//сглаживание
 
@@ -32,8 +33,8 @@ int main()
 	Settings.setFont(font);
 
 	Text textPvP, textSettings;
-	textPvP = Text(L"Игра с другом", font, 40);
-	textPvP.setPosition(116, 117.5);
+	textPvP = Text(L"Играть", font, 40);
+	textPvP.setPosition(180, 117.5);
 	textPvP.setStyle(Text::Bold);
 	textPvP.setFillColor(Color::Black);
 
