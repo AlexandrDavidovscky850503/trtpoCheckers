@@ -6,8 +6,8 @@
 #include <vector>
 using namespace sf;
 using namespace std;
-static Texture texture_white;//спрайт значка дамки
-static Texture texture_black;
+static Texture textureWhite;//спрайт значка дамки
+static Texture textureBlack;
 static bool ifImage = false;
-int NumberImage = 1;
-RenderWindow WorkWindow;
+int numberImage = 1;
+RenderWindow workWindow;

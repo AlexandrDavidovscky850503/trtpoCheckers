@@ -5,8 +5,7 @@ class Square {
 private:
 	bool backlight = 0;	// подсветка 0 если нет, 1 если есть.
 	bool employment = 0;// 0 для свободных, 1 для занятых.//0-cleaar,1-white,2-black
-	//int game_chackers = 0;
-	bool checker_color = 0;	// 0 для белых, 1 для черных.
+	bool checkerColor = 0;	// 0 для белых, 1 для черных.
 	RectangleShape square = RectangleShape(Vector2f(50, 50));//создание об. квадрат
 public:
 	Square() {}
@@ -21,7 +20,7 @@ public:
 		return this->employment;
 	}
 	bool get_checker_color() {				//получить цвет шашки
-		return this->checker_color;
+		return this->checkerColor;
 	}
 
 	void on_backlight() {					//включить подсветку
@@ -33,7 +32,7 @@ public:
 
 	void square_employment(bool _color) {	//клетка занята
 		this->employment = 1;
-		this->checker_color = _color;
+		this->checkerColor = _color;
 	}
 
 	void square_free() {					//клетка свободна
@@ -53,6 +52,6 @@ public:
 
 	bool get_square_employment()
 	{
-		return this->checker_color;
+		return this->checkerColor;
 	}
 };

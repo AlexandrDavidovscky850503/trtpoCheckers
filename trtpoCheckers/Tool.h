@@ -65,7 +65,7 @@ private:
 };
 
 
-void Regulations_windows(ContextSettings& settings)
+void regulations_windows(ContextSettings& settings)
 {
 	setlocale(LC_ALL, "rus");
 

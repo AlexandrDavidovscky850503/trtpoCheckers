@@ -5,7 +5,7 @@
 class Checker {
 private:
 	CircleShape checker = CircleShape(18);// определяем круг с радиусом 18
-	bool checker_color;// 0 для белых, 1 для черных
+	bool checkerColor;// 0 для белых, 1 для черных
 	bool select = 0;//1 если выбрана, 0 если нет
 	bool queen = 0;//1 если шашка дамка, 0 если нет
 	Texture texture;//текстура значка дамки
@@ -26,7 +26,7 @@ public:
 		return (this->get_position().y - 57) / 50;
 	}
 	bool get_color() {// получить цвет шашки
-		return this->checker_color;
+		return this->checkerColor;
 	}
 	bool get_select() {//получить состояние шашки
 		return this->select;
@@ -57,7 +57,7 @@ public:
 	Checker(float x_position, float y_position, bool color) {
 		this->checker.setOutlineThickness(3);// задаём контур толщиной 3 пикселей чёрного цвета
 		this->checker.setOutlineColor(sf::Color(0, 0, 0));
-		this->checker_color = color;
+		this->checkerColor = color;
 
 		if (color == 0)
 			this->set_color(Color(255, 255, 255));//белая шашка
@@ -74,19 +74,19 @@ public:
 		if (queen == 1)
 			if (ifImage == false)
 			{
-				texture_white.loadFromFile("Images//01.png");
-				texture_black.loadFromFile("Images//011.png");
-				if (checker_color == 0)
-					this->sprite.setTexture(texture_white);
+				textureWhite.loadFromFile("Images//01.png");
+				textureBlack.loadFromFile("Images//011.png");
+				if (checkerColor == 0)
+					this->sprite.setTexture(textureWhite);
 				else
-					this->sprite.setTexture(texture_black);
+					this->sprite.setTexture(textureBlack);
 			}
 			else
 			{
-				if (checker_color == 0)
-					this->sprite.setTexture(texture_white);
+				if (checkerColor == 0)
+					this->sprite.setTexture(textureWhite);
 				else
-					this->sprite.setTexture(texture_black);
+					this->sprite.setTexture(textureBlack);
 			}
 		this->sprite.setTextureRect(IntRect(0, 0, 25, 25));
 		sprite.setPosition(this->get_position().x + 6, this->get_position().y + 6);
@@ -98,11 +98,11 @@ public:
 		this->sprite = _checker.sprite;
 		this->select = _checker.select;
 		this->queen = _checker.queen;
-		this->checker_color = _checker.checker_color;
+		this->checkerColor = _checker.checkerColor;
 
-		if (_checker.checker_color == 0)
+		if (_checker.checkerColor == 0)
 			this->set_color(Color(255, 255, 255));
-		else if (_checker.checker_color == 1)
+		else if (_checker.checkerColor == 1)
 			this->set_color(Color::Black);
 
 		this->set_position(_checker.get_position().x, _checker.get_position().y);

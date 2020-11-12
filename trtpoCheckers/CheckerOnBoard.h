@@ -4,7 +4,7 @@
 #include"Board.h"
 
 
-class Checkers_on_board {
+class CheckersOnBoard {
 private:
 	vector <Checker> checkers;//светлые шашки
 	Board board;
@@ -58,7 +58,7 @@ public:
 		checkers.pop_back();
 	}
 
-	Checkers_on_board() {
+	CheckersOnBoard() {
 		start_game();//расставляю шашки
 	}
 

@@ -5,31 +5,31 @@
 #include"Tool.h"
 
 
-void QueenImage(int NumberQueen)
+void queen_image(int NumberQueen)
 {
 	Texture TextureWhite, TextureBlack;
 	if (NumberQueen == 1) {
-		texture_white.loadFromFile("Images//01.png");
-		texture_black.loadFromFile("Images//011.png");
+		textureWhite.loadFromFile("Images//01.png");
+		textureBlack.loadFromFile("Images//011.png");
 
 	}
 	if (NumberQueen == 2) {
-		texture_white.loadFromFile("Images//02.png");
-		texture_black.loadFromFile("Images//022.png");
+		textureWhite.loadFromFile("Images//02.png");
+		textureBlack.loadFromFile("Images//022.png");
 
 	}
 	if (NumberQueen == 3) {
-		texture_white.loadFromFile("Images//03.png");
-		texture_black.loadFromFile("Images//03.png");
+		textureWhite.loadFromFile("Images//03.png");
+		textureBlack.loadFromFile("Images//03.png");
 
 	}
 	if (NumberQueen == 4) {
-		texture_white.loadFromFile("Images//04.png");
-		texture_black.loadFromFile("Images//044.png");
+		textureWhite.loadFromFile("Images//04.png");
+		textureBlack.loadFromFile("Images//044.png");
 	}
 	if (NumberQueen == 5) {
-		texture_white.loadFromFile("Images//0999.png");
-		texture_black.loadFromFile("Images//0999.png");
+		textureWhite.loadFromFile("Images//0999.png");
+		textureBlack.loadFromFile("Images//0999.png");
 
 	}
 }
@@ -91,11 +91,11 @@ void CheckerImages(RenderWindow& window, CircleShape& CheckerWhite, CircleShape&
 	window.draw(SpriteBlack);
 }
 
-void CheckerSettings(ContextSettings& settings)
+void checker_settings(ContextSettings& settings)
 {
 	ifImage = true;
 
-	WorkWindow.create(VideoMode(500, 500), "Checker", sf::Style::Close | sf::Style::Titlebar, settings);
+	workWindow.create(VideoMode(500, 500), "Checker", sf::Style::Close | sf::Style::Titlebar, settings);
 	CircleShape CheckerBlack = CircleShape(54);
 	CircleShape CheckerWhite = CircleShape(54);
 	CheckerBlack.setPosition({ 258,173 });
@@ -161,49 +161,49 @@ void CheckerSettings(ContextSettings& settings)
 	Image icon;
 	icon.loadFromFile("Images/icon.png");
 
-	WorkWindow.setIcon(32, 32, icon.getPixelsPtr());
+	workWindow.setIcon(32, 32, icon.getPixelsPtr());
 
-	while (WorkWindow.isOpen()) {
+	while (workWindow.isOpen()) {
 		Event event;
-		while (WorkWindow.pollEvent(event)) {
+		while (workWindow.pollEvent(event)) {
 			switch (event.type)
 			{
 			case Event::Closed:
-				WorkWindow.close();
+				workWindow.close();
 
 			case Event::MouseMoved:
-				if (ButtonCheckerRight.isMouseOver(WorkWindow))
+				if (ButtonCheckerRight.isMouseOver(workWindow))
 					ButtonCheckerRight.setBackColor(Color(247, 255, 0));
 				else
 					ButtonCheckerRight.setBackColor(Color::Cyan);
-				if (ButtonCheckerLeft.isMouseOver(WorkWindow))
+				if (ButtonCheckerLeft.isMouseOver(workWindow))
 					ButtonCheckerLeft.setBackColor(Color(247, 255, 0));
 				else
 					ButtonCheckerLeft.setBackColor(Color::Cyan);
-				if (Save.isMouseOver(WorkWindow))
+				if (Save.isMouseOver(workWindow))
 					Save.setBackColor(Color(247, 255, 0));
 				else
 					Save.setBackColor(Color::Cyan);
 
 				break;
 			case Event::MouseButtonPressed:
-				if (ButtonCheckerRight.isMouseOver(WorkWindow))
+				if (ButtonCheckerRight.isMouseOver(workWindow))
 				{
-					NumberImage++;
-					if (NumberImage > 5)
-						NumberImage = 1;
+					numberImage++;
+					if (numberImage > 5)
+						numberImage = 1;
 				}
-				if (ButtonCheckerLeft.isMouseOver(WorkWindow))
+				if (ButtonCheckerLeft.isMouseOver(workWindow))
 				{
-					NumberImage--;
-					if (NumberImage < 1)
-						NumberImage = 5;
+					numberImage--;
+					if (numberImage < 1)
+						numberImage = 5;
 				}
-				if (Save.isMouseOver(WorkWindow))
+				if (Save.isMouseOver(workWindow))
 				{
-					QueenImage(NumberImage);
-					WorkWindow.create(VideoMode(500, 500), "Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
-					WorkWindow.setIcon(32, 32, icon.getPixelsPtr());
+					queen_image(numberImage);
+					workWindow.create(VideoMode(500, 500), "Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
+					workWindow.setIcon(32, 32, icon.getPixelsPtr());
 					return;
 				}
 
@@ -216,44 +216,44 @@ void CheckerSettings(ContextSettings& settings)
 		if (Keyboard::isKeyPressed(Keyboard::Right))
 		{
 			Sleep(150);
-			NumberImage++;
-			if (NumberImage > 5)
-				NumberImage = 1;
+			numberImage++;
+			if (numberImage > 5)
+				numberImage = 1;
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Left))
 		{
 			Sleep(150);
-			NumberImage--;
-			if (NumberImage < 1)
-				NumberImage = 5;
+			numberImage--;
+			if (numberImage < 1)
+				numberImage = 5;
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Enter))
 		{
 			Sleep(150);
-			QueenImage(NumberImage);
-			WorkWindow.create(VideoMode(500, 500), "Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
-			WorkWindow.setIcon(32, 32, icon.getPixelsPtr());
+			queen_image(numberImage);
+			workWindow.create(VideoMode(500, 500), "Checkers", sf::Style::Close | sf::Style::Titlebar, settings);
+			workWindow.setIcon(32, 32, icon.getPixelsPtr());
 			return;
 		}
 
-		WorkWindow.clear(Color(245, 210, 175));
+		workWindow.clear(Color(245, 210, 175));
 
 
-		ButtonCheckerRight.DrawTo(WorkWindow);
-		ButtonCheckerLeft.DrawTo(WorkWindow);
-		Save.DrawTo(WorkWindow);
-		WorkWindow.draw(TextLine1);
-		WorkWindow.draw(TextLine2);
-		WorkWindow.draw(SaveText);
+		ButtonCheckerRight.DrawTo(workWindow);
+		ButtonCheckerLeft.DrawTo(workWindow);
+		Save.DrawTo(workWindow);
+		workWindow.draw(TextLine1);
+		workWindow.draw(TextLine2);
+		workWindow.draw(SaveText);
 
-		WorkWindow.draw(SpLeft);
-		WorkWindow.draw(SpRight);
-		WorkWindow.draw(CheckerBlack);
-		WorkWindow.draw(CheckerWhite);
+		workWindow.draw(SpLeft);
+		workWindow.draw(SpRight);
+		workWindow.draw(CheckerBlack);
+		workWindow.draw(CheckerWhite);
 
-		CheckerImages(WorkWindow, CheckerWhite, CheckerBlack, NumberImage);
-		WorkWindow.display();
+		CheckerImages(workWindow, CheckerWhite, CheckerBlack, numberImage);
+		workWindow.display();
 	}
 }

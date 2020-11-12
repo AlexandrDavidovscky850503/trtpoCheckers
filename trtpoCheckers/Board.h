@@ -5,14 +5,14 @@
 
 class Board {
 private:
-	Square all_squares[8][8];
+	Square allSquares[8][8];
 	RectangleShape rectangle;
 
 public:
 	Board() {}
 	Square& get_all_squares(int _i, int _j) {
 		if (_i >= 0 && _j >= 0 && _i < 8 && _j < 8)
-			return this->all_squares[_i][_j];
+			return this->allSquares[_i][_j];
 		throw 1;
 	}
 
@@ -29,23 +29,23 @@ public:
 
 		for (int i = 1; i <= 8; i++)
 			for (int j = 1; j <= 8; j++) {
-				all_squares[i - 1][j - 1].set_position(50 * i, 50 * j);//сохранить координаты клетки  
+				allSquares[i - 1][j - 1].set_position(50 * i, 50 * j);//сохранить координаты клетки  
 				if ((i + j) % 2 == 1)
-					all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));//белая клетка
+					allSquares[i - 1][j - 1].set_color(Color(255, 255, 255));//белая клетка
 				else
-					all_squares[i - 1][j - 1].set_color(Color(174, 87, 0));// коричневая клетка
-				_window.draw(all_squares[i - 1][j - 1].get_square());
+					allSquares[i - 1][j - 1].set_color(Color(174, 87, 0));// коричневая клетка
+				_window.draw(allSquares[i - 1][j - 1].get_square());
 			}
 
 
 		for (int i = 1; i <= 8; i++)
 			for (int j = 1; j <= 8; j++) {
-				if (all_squares[i - 1][j - 1].get_backlight() == 1) {
+				if (allSquares[i - 1][j - 1].get_backlight() == 1) {
 					RectangleShape square_light(Vector2f(50, 50));
 					square_light.setPosition(50 * i, 50 * j);
-					all_squares[i - 1][j - 1].set_color(Color(26, 255, 0));//подсветка зелёным цветом
+					allSquares[i - 1][j - 1].set_color(Color(26, 255, 0));//подсветка зелёным цветом
 				}
-				_window.draw(all_squares[i - 1][j - 1].get_square());
+				_window.draw(allSquares[i - 1][j - 1].get_square());
 			}
 
 		Font font;//шрифт
