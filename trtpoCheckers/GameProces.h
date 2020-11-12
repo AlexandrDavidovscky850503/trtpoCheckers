@@ -110,10 +110,22 @@ public:
 						else {
 							checkers_on_board.get_checker(choise_chacker).set_position(centre_on_square().x, centre_on_square().y);
 							make_queen();
+
 							if (eat_checker()) {
 								checkers_on_board.delete_backlight();
 								x = (centre_on_square().x - 57) / 50;
 								y = (centre_on_square().y - 57) / 50;
+								if (checkers_on_board.get_checker(choise_chacker).get_queen() == 1) {
+									checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).square_employment(checkers_on_board.get_checker(choise_chacker).get_color());
+									who_can_move = !who_can_move;
+									checkers_on_board.get_checker(choise_chacker).leave_checker();
+									select_is_made = 0;
+									std::cout << "Drop" << endl;
+
+									checkers_on_board.delete_backlight();
+									return;
+								}
+
 								if (!chance_eat_checker(checkers_on_board.get_checker(choise_chacker).get_color())) {
 									cout << "loop" << endl;
 									return;
@@ -136,7 +148,7 @@ public:
 
 	void make_move(RenderWindow& _window, Event _event) {
 		choise_of_chacker(_window, _event);//проверка выбора шашки
-		change_position(_window, _event);
+		change_position(_window, _event);//ход шашки
 	}
 
 	void square_for_move() {//варианты хода
@@ -227,13 +239,17 @@ public:
 
 	void make_queen() {
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 0)
-			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0)
+			if (checkers_on_board.get_checker(choise_chacker).get_y() == 0) {
 				checkers_on_board.get_checker(choise_chacker).make_queen();
+			//	who_can_move = !who_can_move;
+			}
 
 
 		if (checkers_on_board.get_checker(choise_chacker).get_color() == 1)
-			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7)
+			if (checkers_on_board.get_checker(choise_chacker).get_y() == 7) {
 				checkers_on_board.get_checker(choise_chacker).make_queen();
+			//	who_can_move = !who_can_move;
+			}
 
 
 	}
