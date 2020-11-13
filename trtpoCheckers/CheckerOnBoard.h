@@ -6,7 +6,7 @@
 
 class CheckersOnBoard {
 private:
-	vector <Checker> checkers;//светлые шашки
+	vector <Checker> checkers;// шашки
 	Board board;
 	int matrixBoard[8][8];
 
