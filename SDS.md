@@ -73,5 +73,5 @@
 <p align="justify"><li>Класс gameProc – класс отвечающий за непосредственно процесс игры.</li></p>
 </ol>
 <p align="left">Диаграмма классов представленна на изображении https://github.com/AlexandrDavidovscky850503/trtpoCheckers/blob/master/ClassDiagram.pdf</p>
-# <h1>4 Пользовательский интерфейс</h1>
+<h1>4 Пользовательский интерфейс</h1>
 <p align="left">Пользовательский интерфейс подробно описан в документе https://github.com/AlexandrDavidovscky850503/trtpoCheckers/blob/master/User_Interface.docx </p>
