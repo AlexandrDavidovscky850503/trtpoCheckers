@@ -48,8 +48,6 @@ public:
 		this->square.setPosition(_x, _y);
 	}
 
-
-
 	bool get_square_employment()
 	{
 		return this->checkerColor;

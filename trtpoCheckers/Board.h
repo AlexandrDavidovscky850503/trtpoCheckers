@@ -3,6 +3,7 @@
 #include"MyHeader.h"
 
 
+
 class Board {
 private:
 	Square allSquares[8][8];
